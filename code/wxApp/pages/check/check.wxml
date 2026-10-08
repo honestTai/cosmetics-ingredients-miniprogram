@@ -1,0 +1,41 @@
+<view class="cu-timeline">
+  <view class="cu-time">基本信息比较结果</view>
+  <view class="cu-item">
+    <view class="content">
+      <view class="margin-top">{{checkResult.result[0]}}</view>
+    </view>
+    <view class="content">
+      <view class="margin-top">{{checkResult.result[1]}}</view>
+    </view>
+  </view>
+</view>
+
+<view class="cu-timeline">
+  <view class="cu-time">成分对比结果</view>
+  <view class="cu-item">
+    <view class="content">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-cyan">{{checkResult.goods.goods.name}}</view>
+        <view class="cu-tag line-cyan">{{checkResult.goods.goods.score}}</view>
+        <view class="cu-tag line-cyan">{{checkResult.goods.goods.price}}</view>
+      </view>
+      <view class="margin-top">
+        <view class="margin-top" wx:for="{{checkResult.goods.goods.sortIntroduces}}" wx:key="index">
+        成分:{{item.key}},作用:{{item.value}},活性:{{item.reactive}},致痘:{{item.vaccination}},风险:{{item.exposures}}
+        </view>
+      </view>
+    </view>
+    <view class="content">
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-cyan">{{checkResult.product.goods.name}}</view>
+        <view class="cu-tag line-cyan">{{checkResult.product.goods.score}}</view>
+        <view class="cu-tag line-cyan">{{checkResult.product.goods.price}}</view>
+      </view>
+      <view class="margin-top">
+        <view class="margin-top" wx:for="{{checkResult.product.goods.sortIntroduces}}" wx:key="index">
+        成分:{{item.key}},作用:{{item.value}},活性:{{item.reactive}},致痘:{{item.vaccination}},风险:{{item.exposures}}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

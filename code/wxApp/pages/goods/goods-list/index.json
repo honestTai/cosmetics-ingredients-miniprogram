@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "化妆品列表",
+  "usingComponents": {
+    "goods-row": "/components/goods-row/index"
+  }
+}

@@ -1,0 +1,120 @@
+
+<view class='product-bg bg-white padding-top'>
+  <swiper class="screen-swiper square-dot screen" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="change">
+    <swiper-item wx:for="{{goodsSpu.goods.goodsPhotoList}}" wx:key="index">
+      <image class="screen-image" src="{{item}}" mode="aspectFill"></image>
+    </swiper-item>
+  </swiper>
+  <view class='page-index cu-tag round'>{{currents}}/{{goodsSpu.goods.goodsPhotoList.length || 1}}</view>
+</view>
+<view class="cu-bar bg-white padding-top-xl">
+  <view class="text-xxl padding-tb-xs padding-lr-sm">
+    <text class="text-price text-blue text-bold">{{goodsSpu.goods.price}}</text>
+  </view>
+  <button class="cu-btn icon margin-right" bindtap="shareShow">
+    <text class="cuIcon-share text-green" title="分享" ></text>
+  </button>
+  <button class="cu-btn icon margin-right" bindtap="toComment" data-id="{{goodsSpu.goods.id}}">
+    评论
+<!--    <text class="cuIcon-form text-green" title="评价"></text>-->
+  </button>
+  <button class="cu-btn icon margin-right" bindtap="checkProduct" data-id="{{goodsSpu.goods.id}}">
+    对比
+<!--    <text class="cuIcon-squarecheck text-green" title="比较"></text>-->
+  </button>
+</view>
+<view class="cu-bar bg-white">
+  <view class="text-lg text-bold padding-lr-sm">
+    <text class="text-black">{{goodsSpu.goods.name}}</text>
+    <!-- <text class="text-like text-red">综合评分:{{goodsSpu.goods.price}}</text> -->
+  </view>
+  <view class="text-lg text-bold padding-lr-sm">
+    <!-- <text class="text-black">{{goodsSpu.goods.name}}</text> -->
+    <text class="text-like text-red">综合评分:{{goodsSpu.goods.score}}分</text>
+  </view>
+</view>
+<view class="cu-bar bg-white solid-bottom">
+  <view class="text-sm padding-lr-sm text-gray">
+    <text wx:if="{{goodsSpu.goods.price}}">市场价：</text>
+    <text class="text-price text-gray">{{goodsSpu.goods.price}}</text>
+  </view>
+</view>
+
+
+<view class="cu-bar bg-white margin-top-sm solid-bottom">
+  <view class="flex response">
+      <view class="flex-sub text-df">
+        <view class="text-black margin-left-sm">评价（{{goodsSpu.commentTotal}}）</view>
+      </view>
+      <navigator url='/pages/comment/list/index?goodsId={{goodsSpu.goods.id}}' hover-class='none'
+       class="flex-sub text-df text-orange text-right margin-right-sm">
+        查看<text class="cuIcon-right"></text>
+      </navigator>
+    </view>
+</view>
+<view class="cu-bar bg-white margin-top-sm">
+  <view class="content">化妆品成分信息</view>
+</view>
+<view class="bg-white">
+  <view class="cu-timeline" wx:for="{{goodsSpu.goods.sortIntroduces}}" wx:key="index">
+    <view class="cu-time">名称:{{item.key}}</view>
+    <view class="cu-time">作用:{{item.value}}</view>
+    <view class="cu-item cur cuIcon-noticefill" >
+      <view class="content bg-green shadow-blur">
+        <text>风险:{{ item.exposures }}</text> <text> 活性:{{ item.reactive }}</text> 致痘:{{ item.vaccination }}
+      </view>
+    </view>
+  </view>
+</view>
+<view class="cu-bar bg-white margin-top-sm">
+  <view class="content">化妆品介绍信息</view>
+</view>
+<scroll-view class="bg-white" scroll-y style="height: 500px;">
+  <rich-text nodes="{{ goodsSpu.goods.introduce }}"></rich-text>
+</scroll-view>
+
+<!-- html转wxml -->
+<!-- <import src="/public/wxParse/wxParse.wxml"/> -->
+
+
+<poster id="poster" hide-loading="{{false}}" preload="{{false}}" config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail"></poster>
+<view class="cu-modal bottom-modal {{shareShow}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white">
+      <view class="action text-green"></view>
+      <view class="action text-red" bindtap="shareHide">取消</view>
+    </view>
+    <view class="padding flex flex-direction">
+      <button class="cu-btn bg-green lg" open-type='share'>发送给朋友</button>
+    </view>
+  </view>
+</view>
+
+<view class="cu-modal {{modalName=='RadioModal'?'show':''}}" bindtap="hideModal">
+  <view class="cu-dialog" catchtap>
+    <scroll-view class="scroll-view" scroll-y="true" style="height: 100px;">
+      <radio-group class="block">
+        <view class="cu-list menu text-left">
+          <view class="cu-item" wx:for="{{goodsList}}" wx:key="index">
+            <label class="flex justify-between align-center flex-sub">
+              <view class="flex-sub">{{item.name}}</view>
+              <radio class="round" data-id="{{item.id}}" bind:tap="checkProductByGoods"></radio>
+            </label>
+          </view>
+        </view>
+      </radio-group>
+    </scroll-view>
+  </view>
+</view>
+
+<view class="cu-modal {{posterShow ? 'show' : ''}}">
+  <view class="cu-dialog">
+    <view style="height: calc(100vh - 200rpx)">
+      <image src="{{posterUrl}}" style="height: 100%;"></image>
+    </view>
+    <view class="cu-bar bg-white">
+      <view class="action margin-0 flex-sub" bindtap="hidePosterShow">取消</view>
+      <view class="action margin-0 flex-sub solid-left text-red text-bold" bindtap="savePoster">保存到相册</view>
+    </view>
+  </view>
+</view>

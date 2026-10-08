@@ -1,0 +1,62 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/base/search/index",
+    "pages/goods/goods-category/index",
+    "pages/goods/goods-list/index",
+    "pages/goods/goods-detail/index",
+    "pages/user/user-center/index",
+    "pages/user/myForum/myForum",
+    "pages/user/myComment/myComment",
+    "pages/comment/list/index",
+    "pages/fourm/fourm",
+    "pages/fourmadd/add",
+    "pages/detail/comment",
+    "pages/addComment/add",
+    "pages/honor/honor",
+    "pages/honorGoods/honorGoods",
+    "pages/goodsComment/add",
+    "pages/check/check"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "backgroundColor": "#ffffff",
+    "color": "#484848",
+    "selectedColor": "#000",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "iconPath": "public/img/1-001.png",
+        "selectedIconPath": "public/img/1-002.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/goods/goods-category/index",
+        "iconPath": "public/img/2-001.png",
+        "selectedIconPath": "public/img/2-002.png",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/fourm/fourm",
+        "iconPath": "public/img/2-001.png",
+        "selectedIconPath": "public/img/2-002.png",
+        "text": "动态"
+      },
+      {
+        "pagePath": "pages/user/user-center/index",
+        "iconPath": "public/img/4-001.png",
+        "selectedIconPath": "public/img/4-002.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {
+    
+  }
+}

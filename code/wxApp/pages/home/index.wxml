@@ -1,0 +1,34 @@
+
+<view class="cu-bar search bg-white fixed" style="box-shadow:none">
+  <view class="search-form round">
+    <text class="cuIcon-search"></text>
+    <navigator class="response" hover-class='none' url='/pages/base/search/index'>
+      <input type="text" placeholder="请输入化妆品名字"></input>
+    </navigator>
+  </view>
+</view>
+<view class="margin-top-bar bg-white">
+
+  <swiper class="screen-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500"  indicator-color="#cccccc" indicator-active-color="#676767">
+    <swiper-item wx:for="{{swiperData}}" wx:key="index">
+      <image src="{{item}}"></image>
+    </swiper-item>
+  </swiper>
+
+  <view class="cu-bar">
+      <view class='action'>
+        <text class="text-xl text-bold text-black">评分排行</text> 
+      </view>
+      <view class='action'>
+    <text class="text-sm text-bold text-black" bind:tap="toHonorList">更多</text> 
+  </view>
+    </view>
+    <goods-row goodsList="{{goodsListByScore}}"/>
+    <view class="cu-bar">
+      <view class='action'>
+        <text class="text-xl text-bold text-black">所有产品</text> 
+      </view>
+    </view>
+  <goods-card goodsList="{{goodsList}}"/>
+  <view class="cu-load bg-white {{loadmore?'loading':'over'}}"></view>
+</view>

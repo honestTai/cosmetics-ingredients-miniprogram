@@ -1,0 +1,31 @@
+
+
+<view class="bg-white ">
+  <!--动态-->
+    <view class="cu-card dynamic {{isCard?'no-card':''}}" wx:for="{{goodsAppraises}}" wx:key="index">
+      <view class="cu-item shadow">
+        <view class="cu-list menu-avatar">
+          <view class="cu-item">
+            <view class="cu-avatar round lg" style="background-image:url({{item.headimgUrl}});"></view>
+            <view class="content flex-sub">
+              <view>{{item.userName}}</view>
+              <view class="text-gray text-sm flex justify-between">
+                {{item.time}}
+              </view>
+              <view class="text-red text-s flex justify-between">
+                评分：{{item.score}}分
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="text-content">
+            {{item.content}}      
+        </view>
+        <view class="grid flex-sub padding-lr {{isCard?'col-3 grid-square':'col-1'}}" catchtap="viewPic" data-pic="{{item.picList}}">
+          <view class="bg-img {{isCard?'':'only-img'}}" style="background-image:url({{item}});" wx:for="{{item.picList}}" wx:key="{{index}}" >
+          </view>
+        </view>
+      </view>
+    </view>
+  <view class="cu-load bg-white {{loadmore?'loading':'over'}}"></view>
+</view>

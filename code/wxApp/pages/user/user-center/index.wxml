@@ -1,0 +1,30 @@
+
+<view class="cu-list menu-avatar bg-white padding-bottom">
+  <view class='flex justify-end margin-right'>
+    <view class="text-xl margin-top" bindtap="settings">
+      <text class="cuIcon-settingsfill text-black"></text>
+    </view>
+  </view>
+  <view class="cu-avatar round xl head flex" style="background-image:url({{wxUser.headimgUrl}})">{{!wxUser.headimgUrl ? '头' : ''}}</view>
+  <view class="content text-center margin-top-sm">
+    <view class="margin-top-xs text-xl" wx:if="{{wxUser.name}}">{{wxUser.name}}</view>
+    <button class="cu-btn round sm margin-top-xs" open-type="getUserInfo" bind:getuserinfo="agreeGetUser" lang="zh_CN">
+      {{!wxUser.name ? '获取昵称' : '更新昵称'}}
+    </button>
+  </view>
+</view>
+
+<view class="cu-list menu card-menu radius address">
+  <navigator class="cu-item arrow" url="../myForum/myForum" hover-class="none">
+    <view class="content">
+      <text class="cuIcon-comment text-green text-xl"></text>
+      <text class="text-grey">我的发布</text>
+    </view>
+  </navigator>
+  <navigator class="cu-item arrow" url="../myComment/myComment" hover-class="none">
+    <view class="content">
+      <text class="cuIcon-comment text-red text-xl"></text>
+      <text class="text-grey">我的评价</text>
+    </view>
+  </navigator>
+</view>

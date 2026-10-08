@@ -1,0 +1,14 @@
+
+<view class="goods-container">
+  <view class="goods-box" wx:for="{{goodsList}}" wx:key="index">
+    <navigator hover-class='none' url='/pages/goods/goods-detail/index?id={{item.goods.id}}'>
+      <view class="text-black margin-top text-bold padding-lr overflow-1">{{item.goods.name}}</view>
+      <view class="img-box">
+        <image src="{{item.goods.goodsPhotoList[0] ? item.goods.goodsPhotoList[0] : '/public/img/no_pic.png'}}" class="margin-top-xs"/>
+      </view>
+      <view class="text-center margin-top">
+        <view class="cu-tag line-black round text-df text-price text-bold text-black">{{item.goods.price}}</view>
+      </view>
+    </navigator>
+  </view>
+</view>

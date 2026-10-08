@@ -1,0 +1,20 @@
+<view class="cu-list menu-avatar">
+  <view class="cu-item" wx:for="{{honorGoods}}" wx:key="index" bind:tap="toGoodsDetail" data-id="{{item.id}}">
+    <view class="cu-avatar round lg" style="background-image:url({{item.goodsPhotoList[0]?item.goodsPhotoList[0]:'/public/img/no_pic.png'}})">
+      <view class="cu-tag badge">{{item.orders}}</view>
+    </view>
+    <view class="content">
+      <view class="text-grey">
+        <text class="text-cut">{{item.name}}</text>
+        <view class="cu-tag round bg-orange sm">{{item.className}}</view>
+      </view>
+      <view class="text-gray text-sm flex">
+        <text class="text-cut">综合评分:{{item.score}}</text>
+      </view>
+    </view>
+    <view class="action">
+      <view class="text-red text-xs">{{item.price}}</view>
+      <view class="cuIcon-moneybagfill text-red"></view>
+    </view>
+  </view>
+</view>
